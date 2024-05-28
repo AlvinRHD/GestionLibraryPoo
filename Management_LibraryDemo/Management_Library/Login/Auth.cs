@@ -10,30 +10,28 @@ namespace Management_Library.Login
     {
         public static string Login(string email, string password)
         {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                return "El email y la contraseña no pueden estar vacíos";
+            }
+
             var user = new User();
             var userLoggin = user.LoadUsers().FirstOrDefault(u => u.Email == email && u.Password == password);
 
-            string response = "";
-
             if (userLoggin == null)
             {
-                throw new NullReferenceException("Credenciales no encontradas");
+                return "Credenciales no encontradas";
             }
 
             switch (userLoggin.Rol)
             {
                 case "admin":
-                    response = "Menu admin";
-                    break;
+                    return "Menu admin";
                 case "user":
-                    response = "Menu usuario";
-                    break;
+                    return "Menu usuario";
                 default:
-                    response = "Credenciales no encontradas";
-                    break;
+                    return "Credenciales no encontradas";
             }
-
-            return response;
         }
     }
 }

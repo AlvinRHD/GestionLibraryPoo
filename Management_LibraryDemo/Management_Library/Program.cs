@@ -1,4 +1,5 @@
-﻿using Management_Library.Login;
+﻿using System;
+using Management_Library.Login;
 
 namespace Management_Library
 {
@@ -6,7 +7,21 @@ namespace Management_Library
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine(Auth.Login("user@gmail.com", "12345"));
+            Console.WriteLine("Ingrese su email:");
+            string email = Console.ReadLine();
+
+            Console.WriteLine("Ingrese su contraseña:");
+            string password = Console.ReadLine();
+
+            try
+            {
+                string result = Auth.Login(email, password);
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ocurrió un error: {ex.Message}");
+            }
         }
     }
 }
