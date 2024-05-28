@@ -1,4 +1,5 @@
-﻿using Management_Library.Interfaces;
+﻿using Management_Library.Exceptions;
+using Management_Library.Interfaces;
 using Management_Library.Models;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,11 @@ namespace Management_Library.Services
         public LoanService(List<Book> books)
         {
             this.books = books;
+        }
+
+        public List<Loan> GetLoans()
+        {
+            return loans;
         }
 
         public void RegisterLoan(string clientEmail, int bookId, int loanDays)
