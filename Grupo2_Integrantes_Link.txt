@@ -1,0 +1,10 @@
+Integrantes: 
+
+Roberto Carlos Iglesias Álvarez - U20230727
+Jorge Humberto Lara Rodezno - U20230258
+Alvin Ezequiel Rosales Hernández - U20230560
+
+Enlace del repo de github: 
+
+https://github.com/AlvinRHD/GestionLibraryPoo.git
+
