@@ -10,40 +10,52 @@ namespace Management_Library
     {
         private static void Main(string[] args)
         {
+            bool isLoggedIn = false;
             IBookService bookService = new BookService();
             IUserService userService = new UserService();
             ILoanService loanService = new LoanService(bookService.GetBooks());
 
             InitializeData(bookService, userService);
 
-            Console.WriteLine("Ingrese su email:");
-            string email = Console.ReadLine();
+            string email, password;
 
-            Console.WriteLine("Ingrese su contraseña:");
-            string password = Console.ReadLine();
-
-            try
+            while (true) 
             {
-                string role = AuthService.Login(email, password, userService);
-                switch (role)
+                isLoggedIn = false; 
+
+                Console.WriteLine("\n*****************************--- Inicio de sesión ---*****************************");
+
+                Console.WriteLine("\nIngrese su email:");
+                email = Console.ReadLine();
+
+                Console.WriteLine("Ingrese su contraseña:");
+                password = Console.ReadLine();
+
+                try
                 {
-                    case "admin":
-                        AdminMenu(bookService, loanService);
-                        break;
-                    case "assistant":
-                        AssistantMenu(bookService);
-                        break;
-                    case "user":
-                        UserMenu(loanService, email);
-                        break;
-                    default:
-                        Console.WriteLine("Rol no reconocido.");
-                        break;
+                    string role = AuthService.Login(email, password, userService);
+                    isLoggedIn = true;
+
+                    switch (role)
+                    {
+                        case "admin":
+                            AdminMenu(bookService, loanService);
+                            break;
+                        case "assistant":
+                            AssistantMenu(bookService);
+                            break;
+                        case "user":
+                            UserMenu(loanService, email);
+                            break;
+                        default:
+                            Console.WriteLine("Rol no reconocido.");
+                            break;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ocurrió un error: {ex.Message}");
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ocurrió un error: {ex.Message}");
+                }
             }
         }
 
@@ -65,7 +77,8 @@ namespace Management_Library
                 Console.WriteLine("\nMenu Admin:");
                 Console.WriteLine("1. Ver listado de libros.");
                 Console.WriteLine("2. Registrar préstamo.");
-                Console.WriteLine("3. Salir.");
+                Console.WriteLine("3. Cerrar sesión.");
+                Console.WriteLine("4. Salir del programa.");
                 Console.Write("Seleccione una opción: ");
                 var option = Console.ReadLine();
 
@@ -98,6 +111,9 @@ namespace Management_Library
                         break;
                     case "3":
                         return;
+                    case "4":
+                        Environment.Exit(0); // Cerrar programa completamente
+                        break;
                     default:
                         Console.WriteLine("Opción no válida.");
                         break;
@@ -112,7 +128,8 @@ namespace Management_Library
                 Console.WriteLine("\nMenu Asistente:");
                 Console.WriteLine("1. Agregar nuevo libro.");
                 Console.WriteLine("2. Editar datos de un libro.");
-                Console.WriteLine("3. Salir.");
+                Console.WriteLine("3. Cerrar sesión.");
+                Console.WriteLine("4. Salir del programa.");
                 Console.Write("Seleccione una opción: ");
                 var option = Console.ReadLine();
 
@@ -148,6 +165,9 @@ namespace Management_Library
                         break;
                     case "3":
                         return;
+                    case "4":
+                        Environment.Exit(0); 
+                        break;
                     default:
                         Console.WriteLine("Opción no válida.");
                         break;
@@ -161,7 +181,8 @@ namespace Management_Library
             {
                 Console.WriteLine("\nMenu Usuario:");
                 Console.WriteLine("1. Devolver libro.");
-                Console.WriteLine("2. Salir.");
+                Console.WriteLine("2. Cerrar sesión.");
+                Console.WriteLine("3. Salir del programa.");
                 Console.Write("Seleccione una opción: ");
                 var option = Console.ReadLine();
 
@@ -183,6 +204,9 @@ namespace Management_Library
                         break;
                     case "2":
                         return;
+                    case "3":
+                        Environment.Exit(0);
+                        break;
                     default:
                         Console.WriteLine("Opción no válida.");
                         break;

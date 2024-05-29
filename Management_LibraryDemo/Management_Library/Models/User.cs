@@ -21,8 +21,8 @@ namespace Management_Library.Models
             {
                 return new List<User>()
             {
-                new User { FullName = "Admin", Email = "admin@gmail.com", Password = "123", Rol = "admin" },
-                new User { FullName = "User", Email = "user@gmail.com", Password = "123", Rol = "user" },
+                new User { FullName = "Librarian", Email = "librarian@gmail.com", Password = "123", Rol = "admin" }, 
+                new User { FullName = "Client", Email = "client@gmail.com", Password = "123", Rol = "user" },
                 new User { FullName = "Assistant", Email = "assistant@gmail.com", Password = "123", Rol = "assistant" }
             };
             }
