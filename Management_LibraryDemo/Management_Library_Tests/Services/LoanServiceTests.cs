@@ -26,7 +26,7 @@ namespace Management_Library_Tests.Services
             var book = new Book { Title = "Test Book", Author = "Test Author" };
             bookService.AddBook(book);
 
-            loanService.RegisterLoan("client@example.com", 1, 7);
+            loanService.RegisterLoan("client@gmail.com", 1, 7);
             var books = bookService.GetBooks();
 
             Assert.False(books[0].IsAvailable);
@@ -35,7 +35,7 @@ namespace Management_Library_Tests.Services
         [Fact]
         public void RegisterLoan_ShouldThrowExceptionIfBookNotFound()
         {
-            Assert.Throws<BookNotFoundException>(() => loanService.RegisterLoan("client@example.com", 999, 7));
+            Assert.Throws<BookNotFoundException>(() => loanService.RegisterLoan("client@gmail.com", 999, 7));
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace Management_Library_Tests.Services
         {
             var book = new Book { Title = "Test Book", Author = "Test Author" };
             bookService.AddBook(book);
-            loanService.RegisterLoan("client@example.com", 1, 7);
+            loanService.RegisterLoan("client@gmail.com", 1, 7);
             var loan = loanService.GetLoans()[0];
 
             loanService.ReturnBook(loan.Id);

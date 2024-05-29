@@ -17,8 +17,8 @@ namespace Management_Library.Login
         {
             var users = new List<User>()
             {
-                new User {FullName = "Admin", Email = "admin@gmail.com", Password = "12345", Rol = "admin"},
-                new User {FullName = "User", Email = "user@gmail.com", Password = "12345", Rol = "user"},
+                new User {FullName = "Admin", Email = "admin@gmail.com", Password = "123", Rol = "admin"},
+                new User {FullName = "User", Email = "user@gmail.com", Password = "123", Rol = "user"},
             };
 
             return users;

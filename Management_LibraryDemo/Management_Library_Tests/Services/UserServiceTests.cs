@@ -21,7 +21,7 @@ namespace Management_Library_Tests.Services
         {
             var users = userService.LoadUsers();
 
-            Assert.Equal(3, users.Count); // Verifica que haya 3 usuarios.
+            Assert.Equal(3, users.Count);
         }
 
         [Fact]

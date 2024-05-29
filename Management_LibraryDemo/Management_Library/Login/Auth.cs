@@ -12,7 +12,7 @@ namespace Management_Library.Login
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                return "El email y la contraseña no pueden estar vacíos";
+                return "El email y la contraseña no pueden estar vacíos.";
             }
 
             var user = new User();
@@ -20,17 +20,17 @@ namespace Management_Library.Login
 
             if (userLoggin == null)
             {
-                return "Credenciales no encontradas";
+                return "Credenciales no encontradas...";
             }
 
             switch (userLoggin.Rol)
             {
                 case "admin":
-                    return "Menu admin";
+                    return "Menu administrados";
                 case "user":
                     return "Menu usuario";
                 default:
-                    return "Credenciales no encontradas";
+                    return "Credenciales no encontradas...";
             }
         }
     }

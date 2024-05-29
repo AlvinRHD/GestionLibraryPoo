@@ -60,7 +60,7 @@ namespace Management_Library.Services
                 book.IsAvailable = true;
                 if (DateTime.Now > loan.DueDate)
                 {
-                    Console.WriteLine("Mora: El libro fue devuelto tarde.");
+                    Console.WriteLine("Mora: ¡El libro fue devuelto tarde!.");
                 }
             }
         }

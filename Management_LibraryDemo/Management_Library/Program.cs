@@ -49,12 +49,12 @@ namespace Management_Library
 
         private static void InitializeData(IBookService bookService, IUserService userService)
         {
-            // Inicializar libros
             bookService.AddBook(new Book { Title = "Cien Años de Soledad", Author = "Gabriel García Márquez" });
             bookService.AddBook(new Book { Title = "Don Quijote de la Mancha", Author = "Miguel de Cervantes" });
             bookService.AddBook(new Book { Title = "El Principito", Author = "Antoine de Saint-Exupéry" });
+            bookService.AddBook(new Book { Title = "El retrato de Dorian Gray", Author = "Oscar Wilde" });
+            bookService.AddBook(new Book { Title = "Asylum", Author = "Madeleine Roux" });
 
-            // Inicializar usuarios
             var users = userService.LoadUsers();
         }
 
@@ -63,9 +63,9 @@ namespace Management_Library
             while (true)
             {
                 Console.WriteLine("\nMenu Admin:");
-                Console.WriteLine("1. Ver listado de libros");
-                Console.WriteLine("2. Registrar préstamo");
-                Console.WriteLine("3. Salir");
+                Console.WriteLine("1. Ver listado de libros.");
+                Console.WriteLine("2. Registrar préstamo.");
+                Console.WriteLine("3. Salir.");
                 Console.Write("Seleccione una opción: ");
                 var option = Console.ReadLine();
 
@@ -89,7 +89,7 @@ namespace Management_Library
                         try
                         {
                             loanService.RegisterLoan(clientEmail, bookId, loanDays);
-                            Console.WriteLine("Préstamo registrado correctamente.");
+                            Console.WriteLine("¡Préstamo registrado correctamente!.");
                         }
                         catch (Exception ex)
                         {
@@ -110,9 +110,9 @@ namespace Management_Library
             while (true)
             {
                 Console.WriteLine("\nMenu Asistente:");
-                Console.WriteLine("1. Agregar nuevo libro");
-                Console.WriteLine("2. Editar datos de un libro");
-                Console.WriteLine("3. Salir");
+                Console.WriteLine("1. Agregar nuevo libro.");
+                Console.WriteLine("2. Editar datos de un libro.");
+                Console.WriteLine("3. Salir.");
                 Console.Write("Seleccione una opción: ");
                 var option = Console.ReadLine();
 
@@ -139,7 +139,7 @@ namespace Management_Library
                         try
                         {
                             bookService.EditBook(bookId, title, author);
-                            Console.WriteLine("Libro editado correctamente.");
+                            Console.WriteLine("¡Libro editado correctamente!.");
                         }
                         catch (Exception ex)
                         {
@@ -160,8 +160,8 @@ namespace Management_Library
             while (true)
             {
                 Console.WriteLine("\nMenu Usuario:");
-                Console.WriteLine("1. Devolver libro");
-                Console.WriteLine("2. Salir");
+                Console.WriteLine("1. Devolver libro.");
+                Console.WriteLine("2. Salir.");
                 Console.Write("Seleccione una opción: ");
                 var option = Console.ReadLine();
 
@@ -174,7 +174,7 @@ namespace Management_Library
                         try
                         {
                             loanService.ReturnBook(loanId);
-                            Console.WriteLine("Libro devuelto correctamente.");
+                            Console.WriteLine("¡Libro devuelto correctamente!.");
                         }
                         catch (Exception ex)
                         {

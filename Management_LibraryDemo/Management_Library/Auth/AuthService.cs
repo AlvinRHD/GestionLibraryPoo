@@ -17,7 +17,7 @@ namespace Management_Library.Auth
 
             if (userLoggin == null)
             {
-                throw new UserNotFoundException("Credenciales no encontradas");
+                throw new UserNotFoundException("Sus credenciales no han sido encontradas...");
             }
 
             return userLoggin.Rol;

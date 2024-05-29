@@ -21,7 +21,7 @@ namespace Management_Library_Tests.Auth
         [Fact]
         public void Login_ShouldReturnUserRole()
         {
-            var role = AuthService.Login("admin@gmail.com", "12345", userService);
+            var role = AuthService.Login("admin@gmail.com", "123", userService);
 
             Assert.Equal("admin", role);
         }
